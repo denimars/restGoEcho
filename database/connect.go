@@ -4,6 +4,7 @@ import(
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"log"
+	mo "restGoEcho/models"
 )
 
 var DB *gorm.DB
@@ -17,5 +18,5 @@ func init(){
 		log.Println("Connected... horraaaay")
 	}
 	DB.SingularTable(true)
-	//DB.AutoMigrate()
+	DB.AutoMigrate(&mo.Loan{}, &mo.Ptk{})
 }
