@@ -1,9 +1,7 @@
 package main
 
-import "fmt"
-import "restGoEcho/database"
+import "restGoEcho/routes"
 
 func main(){
-	database.DB.Close()
-	fmt.Println("test")
+	routes.Route()
 }
