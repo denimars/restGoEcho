@@ -1,0 +1,10 @@
+package: restGoEcho
+import:
+- package: github.com/jinzhu/gorm
+  version: ^1.0.0
+  subpackages:
+  - dialects/mysql
+- package: github.com/labstack/echo
+  version: ^3.2.3
+  subpackages:
+  - middleware
