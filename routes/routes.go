@@ -12,6 +12,9 @@ func Route(){
 	e.Use(middleware.Recover())
 
 	e.POST("/ptk", c.CreatePtk)
+	e.GET("/ptk/:id", c.GetPtk)
+	e.PUT("/ptk/:id", c.UpdatePtk)
+
 
 
 	e.Logger.Fatal(e.Start(":8080"))
