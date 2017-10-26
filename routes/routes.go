@@ -14,6 +14,7 @@ func Route(){
 	e.POST("/ptk", c.CreatePtk)
 	e.GET("/ptk/:id", c.GetPtk)
 	e.PUT("/ptk/:id", c.UpdatePtk)
+	e.DELETE("/ptk/:id", c.DeletePtk)
 
 
 

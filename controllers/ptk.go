@@ -5,7 +5,7 @@ import(
 	"github.com/labstack/echo"
 	db "restGoEcho/database"
 	m "restGoEcho/models"
-	//"log"
+	"log"
 	"strconv"
 )
 
@@ -52,5 +52,17 @@ func UpdatePtk(c echo.Context) error{
 	ptk.Address = ptks.Address
 	db.DB.Save(&ptk)
 	message := map[string] string{"message":"success"}
+	return c.JSON(http.StatusOK, message)
+}
+
+func DeletePtk(c echo.Context) error{
+	id, _ := strconv.Atoi(c.Param("id"))
+	var ptk m.Ptk
+	err := db.DB.Where("id=?", id).Delete(&ptk)
+	if err.Error!=nil{
+		log.Println(err.Error)
+	}
+	//return c.NoContent(http.StatusNoContent)
+	message := map[string] string{"status": "success"}
 	return c.JSON(http.StatusOK, message)
 }
