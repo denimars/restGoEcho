@@ -40,7 +40,6 @@ func init(){
 	var err error
 	var c conf
 	c.getConf()
-	//conB := c.User+":"+c.Password+"@/"+c.Database+"?charset=utf8&parseTime=True&loc=Local"
 	conB := fmt.Sprintf("%v:%v@/%v?charset=utf8&parseTime=True&loc=Local", c.User, c.Password, c.Database)
 	DB, err = gorm.Open("mysql",conB)
 	if err != nil{
