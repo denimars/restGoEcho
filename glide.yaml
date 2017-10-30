@@ -8,3 +8,4 @@ import:
   version: ^3.2.3
   subpackages:
   - middleware
+- package: gopkg.in/yaml.v2
