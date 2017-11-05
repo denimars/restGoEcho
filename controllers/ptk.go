@@ -1,4 +1,4 @@
-package ptk
+package controllers
 
 import(
 	"net/http"
@@ -53,6 +53,12 @@ func UpdatePtk(c echo.Context) error{
 	db.DB.Save(&ptk)
 	message := map[string] string{"message":"success"}
 	return c.JSON(http.StatusOK, message)
+}
+
+func AllPtk(c echo.Context) error{
+	var ptk []m.Ptk
+	db.DB.Find(&ptk)
+	return c.JSON(http.StatusOK, ptk)
 }
 
 func DeletePtk(c echo.Context) error{
