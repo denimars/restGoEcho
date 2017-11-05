@@ -27,7 +27,7 @@ func CreatePtk(c echo.Context) error{
 func GetPtk(c echo.Context) error{
 	var ptk m.Ptk
 	id, _ := strconv.Atoi(c.Param("id"))
-	sts := db.DB.Find(&ptk, id)
+	sts := db.DB.Preload("LoanId").Find(&ptk, id)
 	if sts.RecordNotFound(){
 		message := map[string] string{"message":"Not Found"}
 		return c.JSON(http.StatusOK, message)
