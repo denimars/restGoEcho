@@ -53,3 +53,9 @@ func UpdateLoan(c echo.Context) error{
 	message := map[string] string{"message":"success"}
 	return c.JSON(http.StatusOK, message)
 }
+
+func AllLoan(c echo.Context) error{
+	var loan []m.Loan
+	db.DB.Find(&loan)
+	return c.JSON(http.StatusOK, loan)
+}
