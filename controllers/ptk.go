@@ -57,7 +57,7 @@ func UpdatePtk(c echo.Context) error{
 
 func AllPtk(c echo.Context) error{
 	var ptk []m.Ptk
-	db.DB.Find(&ptk)
+	db.DB.Preload("LoanId").Find(&ptk)
 	return c.JSON(http.StatusOK, ptk)
 }
 
