@@ -18,6 +18,7 @@ func Route(){
 	e.GET("/ptk", c.AllPtk)
 
 	e.POST("/loan", c.CreateLoan)
+	e.GET("/loan/:id", c.GetLoan)
 
 
 

@@ -5,8 +5,8 @@ import(
 	"github.com/labstack/echo"
 	db "restGoEcho/database"
 	m "restGoEcho/models"
-	/**"log"
-	"strconv"*/
+	//"log"
+	"strconv"
 )
 
 func CreateLoan(c echo.Context) error{
@@ -21,4 +21,15 @@ func CreateLoan(c echo.Context) error{
 	loan.Value= u.Value
 	db.DB.Create(&loan)
 	return c.JSON(http.StatusCreated,u)
+}
+
+func GetLoan(c echo.Context) error{
+	var loan m.Loan
+	id, _ := strconv.Atoi(c.Param("id"))
+	sts := db.DB.Find(&loan, id)
+	if sts.RecordNotFound(){
+		message := map[string] string{"message":"Not Found :)"}
+		return c.JSON(http.StatusOK, message)
+	}
+	return c.JSON(http.StatusOK, loan)
 }
