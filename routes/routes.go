@@ -19,6 +19,7 @@ func Route(){
 
 	e.POST("/loan", c.CreateLoan)
 	e.GET("/loan/:id", c.GetLoan)
+	e.PUT("/loan/:id", c.UpdateLoan)
 
 
 
