@@ -5,7 +5,7 @@ import(
 	"github.com/labstack/echo"
 	db "restGoEcho/database"
 	m "restGoEcho/models"
-	//"log"
+	"log"
 	"strconv"
 )
 
@@ -58,4 +58,15 @@ func AllLoan(c echo.Context) error{
 	var loan []m.Loan
 	db.DB.Find(&loan)
 	return c.JSON(http.StatusOK, loan)
+}
+
+func DeleteLoan(c echo.Context) error{
+	id,_ := strconv.Atoi(c.Param("id"))
+	var loan m.Loan
+	err := db.DB.Where("id=?", id).Delete(&loan)
+	if err.Error!=nil{
+		log.Println(err.Error)
+	}
+	message:= map[string] string{"status":"success"}
+	return c.JSON(http.StatusOK, message)
 }

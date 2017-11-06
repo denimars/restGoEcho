@@ -21,6 +21,7 @@ func Route(){
 	e.GET("/loan/:id", c.GetLoan)
 	e.PUT("/loan/:id", c.UpdateLoan)
 	e.GET("/loan", c.AllLoan)
+	e.DELETE("/loan/:id", c.DeleteLoan)
 
 	e.Logger.Fatal(e.Start(":8080"))
 }
